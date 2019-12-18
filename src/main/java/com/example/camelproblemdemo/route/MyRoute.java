@@ -8,12 +8,6 @@ public class MyRoute extends RouteBuilder {
 
   @Override
   public void configure() {
-//    from("file://d:/tmp-data/?fileName=test&noop=true")
-//      .setHeader("val1", constant(1))
-//      .setHeader("val2", constant("yo"))
-//      .to("sql:insert into tmp (col1, col2) values (:#val1, :#val2)?dataSource=#dataSource")
-//    ;
-
     from("file://d:/tmp-data/?fileName=test&noop=true")
       .setHeader("val1", constant(1))
       .setHeader("val2", constant("yo"))
