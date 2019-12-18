@@ -13,6 +13,12 @@ public class MyRoute extends RouteBuilder {
       .setHeader("val2", constant("yo"))
       .setHeader("insertSql", constant("insert into tmp (col1, col2) values (:#val1, :#val2)"))
       .toD("sql:${header.insertSql}?dataSource=#dataSource")
+      .to("direct:query")
+    ;
+
+    from("direct:query")
+      .to("sql:select count(*) from tmp?outputType=SelectOne&dataSource=#dataSource")
+      .to("log:result")
     ;
   }
 }
